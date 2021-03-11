@@ -1,2 +1,3 @@
 # ColourClash
- Colour Clash Colour changing platform game
+ Colour Clash - colour changing platform game
+ Designed for my portfolio project Final year at University of Sunderland Game Development course
