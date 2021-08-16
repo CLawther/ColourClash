@@ -4,44 +4,40 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    float movementspeed;
+    CharacterController player;
 
-    public Rigidbody myrb;
+    public float movespeed = 6.0f;
+    public float jumppower = 10.0f;
+    public float gravity = 20.0f;
 
-    // Start is called before the first frame update
+    private Vector3 moveDirection = Vector3.zero;
+
     void Start()
     {
-        movementspeed = 10f;
-
-        myrb = GetComponent<Rigidbody>();
+        player = GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        //by pressing up arrow can move player forwards
-        if (Input.GetKey(KeyCode.UpArrow))
+        //If player is grounded player can jump
+        if (player.isGrounded)
         {
-            transform.position += new Vector3(0f, 0f, -movementspeed) * Time.deltaTime;
+            //Using Unity's built on axis so player can move with WASD or arrow keys
+            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+            moveDirection *= -movespeed;
+
+            //When spacebar is pressed player jumps
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                //Adding jump power when player jumps
+                moveDirection.y = jumppower;
+            }
         }
 
-        //by pressing down arrow can move player backwards
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            transform.position += new Vector3(0f, 0f, movementspeed) * Time.deltaTime;
-        }
+       //Appy gravity here whilst player is descending after jump multiplied by time delta time
+        moveDirection.y -= gravity * Time.deltaTime;
 
-        //by pressing left arrow player can move left
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            transform.position += new Vector3(-movementspeed, 0f, 0f) * Time.deltaTime;
-        }
-
-        //by pressing right arrow player can move right
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.position += new Vector3(movementspeed, 0f, 0f) * Time.deltaTime;
-        }
-
+        // Move the controller
+        player.Move(moveDirection * Time.deltaTime);
     }
 }

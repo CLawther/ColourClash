@@ -8,8 +8,8 @@ public class CameraController : MonoBehaviour
 
     public Vector3 offset;
 
-    //To run at frame time in order to make camera follow the player as it will be following behind
-    private void FixedUpdate()
+    //To run after evrything else in order to make camera follow the player as it will be following behind
+    private void LateUpdate()
     {
         //This position is where the camera snaps to
         Vector3 preferredPosition = goal.position + offset;
