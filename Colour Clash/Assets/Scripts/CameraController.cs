@@ -1,25 +1,25 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    //declaring variables to be used later to enable less jittery camera movemnts for a better overall gameplay experience
     public Transform goal;
+
+    public float smoothVelocity = 0.150f;
 
     public Vector3 offset;
 
-    [Range(0.01f, 1.0f)]
-    public float Smooth = 0.6f;
-
-    void Start()
-    {
-        offset = transform.position - goal.position;
-    }
-
+    //To run at frame time in order to make camera follow the player as it will be following behind
     private void FixedUpdate()
     {
-        Vector3 desiredPosition = goal.position + offset;
+        //This position is where the camera snaps to
+        Vector3 preferredPosition = goal.position + offset;
+        //Gets preferred position even close depending on the smooth velocity
+        Vector3 endPosition = Vector3.Lerp(transform.position, goal.position, smoothVelocity);
+        //Cameras position equal to the goal position which will be the player
+        transform.position = goal.position + offset;
 
-        transform.position = Vector3.Slerp(transform.position, desiredPosition, Smooth);
+        //Making sure the camera is always pointed at the player
+        transform.LookAt(goal);
     }
+
 }

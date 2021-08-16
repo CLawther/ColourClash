@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        movementspeed = 20f;
+        movementspeed = 10f;
 
         myrb = GetComponent<Rigidbody>();
     }
