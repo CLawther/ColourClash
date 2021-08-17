@@ -7,13 +7,14 @@ public class PlayerMovement : MonoBehaviour
     CharacterController player;
 
     public float movespeed = 10.0f;
-    public float jumppower = 12.0f;
+    public float jumppower = 20.0f;
     public float gravity = 30.0f;
 
     private Vector3 moveDirection = Vector3.zero;
 
     void Start()
     {
+        //Getting player's character controller at start
         player = GetComponent<CharacterController>();
     }
 
@@ -34,10 +35,10 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-       //Appy gravity here whilst player is descending after jump multiplied by time delta time
+        //Appy gravity here whilst player is descending after jump multiplied by time delta time
         moveDirection.y -= gravity * Time.deltaTime;
 
-        // Move the controller
+        // Move the player controller
         player.Move(moveDirection * Time.deltaTime);
     }
 }
