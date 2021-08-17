@@ -6,9 +6,9 @@ public class PlayerMovement : MonoBehaviour
 {
     CharacterController player;
 
-    public float movespeed = 6.0f;
-    public float jumppower = 10.0f;
-    public float gravity = 20.0f;
+    public float movespeed = 10.0f;
+    public float jumppower = 12.0f;
+    public float gravity = 30.0f;
 
     private Vector3 moveDirection = Vector3.zero;
 

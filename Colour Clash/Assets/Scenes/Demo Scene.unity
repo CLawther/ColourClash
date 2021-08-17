@@ -264,7 +264,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 501607304}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.48214003
   m_Height: 1.877172
@@ -327,7 +327,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 501607304}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.496578, y: 2.99, z: -12.17}
+  m_LocalPosition: {x: 5.496578, y: 3.027, z: -12.17}
   m_LocalScale: {x: 0.6, y: 0.44625, z: 0.7}
   m_Children: []
   m_Father: {fileID: 0}
@@ -344,8 +344,8 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -452,10 +452,11 @@ GameObject:
   - component: {fileID: 865373824}
   - component: {fileID: 865373823}
   - component: {fileID: 865373822}
+  - component: {fileID: 865373828}
   - component: {fileID: 865373826}
-  - component: {fileID: 865373827}
   - component: {fileID: 865373821}
   - component: {fileID: 865373825}
+  - component: {fileID: 865373827}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -536,7 +537,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 865373820}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.3580313, y: 3, z: -10.14}
+  m_LocalPosition: {x: 4.3580313, y: 3.15, z: -9.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -553,8 +554,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.4376554
-  m_Center: {x: 0, y: -0.0029906034, z: -0.009892404}
+  m_Radius: 0.48686123
+  m_Center: {x: 0, y: -0.024078846, z: -0.009892464}
 --- !u!114 &865373826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -567,10 +568,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6264ccef9df863d42a3a5e0fc798266a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movespeed: 5
-  verticalforce: 5
-  gravity: 5
-  jumpforce: 5
+  movespeed: 6
+  jumppower: 10
+  gravity: 20
 --- !u!143 &865373827
 CharacterController:
   m_ObjectHideFlags: 0
@@ -582,13 +582,29 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 0
-  m_Radius: 0
-  m_SlopeLimit: 0
-  m_StepOffset: 0
-  m_SkinWidth: 0.0001
-  m_MinMoveDistance: 0
+  m_Height: 1
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &865373828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865373820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb4db6b9081a33445b3597d3129e6bdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 865373820}
+  rend: {fileID: 865373822}
+  PlayerColour: 
+  value: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
