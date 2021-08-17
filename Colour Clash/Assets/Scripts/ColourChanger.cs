@@ -61,7 +61,5 @@ public class ColourChanger : MonoBehaviour
             colourvalue = 5;
             rend.material.color = Color.blue;
         }
-
-
     }
 }
