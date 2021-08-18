@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
         //If player is grounded enabling vertical and horizontal movement
         if (player.isGrounded)
         {
-            //Using Unity's built on axis so player can move with WASD or arrow keys
+            //Using Unity's built in axis so player can move with WASD or arrow keys
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
             moveDirection *= -movespeed;
 
@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        //Appy gravity here whilst player is descending after jump multiplied by time delta time
+        //Apply gravity here whilst player is descending after jump multiplied by time delta time
         moveDirection.y -= gravity * Time.deltaTime;
 
         // Move the player controller
