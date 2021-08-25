@@ -4,48 +4,42 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    CharacterController player;
+    private Rigidbody myRB;
 
-    public float movespeed = 10.0f;
-    public float jumppower = 20.0f;
-    public float gravity = 30.0f;
+    public float jumpPower;
+    public float movementSpeed;
 
-    private Vector3 moveDirection = Vector3.zero;
-    private bool isGrounded;
-
+    // Use this for initialization
     void Start()
     {
-        //Getting player's character controller at start
-        player = GetComponent<CharacterController>();
-    }
-
-    private void OnCollisionStay()
-    {
-        //Setting grounded to true
-        isGrounded = true;
+        //Getting player rigidbody at start
+        myRB = GetComponent<Rigidbody>();
+        //Setting player's move speed and jump power to 10 at start
+        movementSpeed = 8f;
+        jumpPower = 8f;
     }
 
     void Update()
     {
-        //If player is grounded enabling vertical and horizontal movement
-        if (player.isGrounded)
+        // Making sure that if Player presses down space bar Player can jump and checking if player is grounded
+        if (Grounded() && Input.GetKeyDown(KeyCode.Space))
         {
-            //Using Unity's built in axis so player can move with WASD or arrow keys
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
-            moveDirection *= -movespeed;
-
-            //When spacebar is pressed player jumps and if player is grounded
-            if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-            {
-                //Adding jump power when player jumps
-                moveDirection.y = jumppower;
-            }
+            myRB.velocity = new Vector3(myRB.velocity.x, jumpPower);
         }
-
-        //Apply gravity here whilst player is descending after jump multiplied by time delta time
-        moveDirection.y -= gravity * Time.deltaTime;
-
-        // Move the player controller
-        player.Move(moveDirection * Time.deltaTime);
     }
+
+    //Using fixed update to run at frame time
+    public void FixedUpdate()
+    {
+        //Using Unity's built in axis so player can move with arrow keys or WASD
+        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        myRB.MovePosition(transform.position - move * Time.deltaTime * movementSpeed);
+    }
+
+    //Creating a method to be used for detection of the ground using a raycast
+    public bool Grounded()
+    {
+        return Physics.Raycast(transform.position, Vector3.down, 1.0f);
+    }
+
 }

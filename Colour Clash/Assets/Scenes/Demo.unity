@@ -713,7 +713,6 @@ GameObject:
   - component: {fileID: 865373821}
   - component: {fileID: 865373825}
   - component: {fileID: 865373830}
-  - component: {fileID: 865373827}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -826,27 +825,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6264ccef9df863d42a3a5e0fc798266a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movespeed: 6
-  jumppower: 20
-  gravity: 30
---- !u!143 &865373827
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 865373820}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 1
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  jumpPower: 5
+  movementSpeed: 0
 --- !u!114 &865373828
 MonoBehaviour:
   m_ObjectHideFlags: 0
