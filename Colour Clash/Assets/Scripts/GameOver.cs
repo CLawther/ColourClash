@@ -12,7 +12,7 @@ public class GameOver : MonoBehaviour
     void Update()
     {
         //If player goes out of bounds off map y too far player will reload the demo
-        if (Player.transform.position.y < -2)
+        if (Player.transform.position.y < -1)
         {
             //Making player's position equal to the bounds position as its attached to the player in order to reload scene
             this.Player.transform.position = Bounds.position;
